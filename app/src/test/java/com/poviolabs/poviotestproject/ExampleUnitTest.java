@@ -1,4 +1,4 @@
-package com.poviolabs.www.poviotestproject;
+package com.poviolabs.poviotestproject;
 
 import org.junit.Test;
 

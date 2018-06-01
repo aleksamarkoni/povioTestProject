@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">PovioTestProject</string>
+    <string name="search_hint">search repositories</string>
 </resources>

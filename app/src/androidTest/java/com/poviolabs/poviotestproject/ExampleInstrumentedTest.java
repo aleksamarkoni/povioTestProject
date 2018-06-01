@@ -1,4 +1,4 @@
-package com.poviolabs.www.poviotestproject;
+package com.poviolabs.poviotestproject;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.poviolabs.www.poviotestproject", appContext.getPackageName());
+        assertEquals("com.poviolabs.poviotestproject", appContext.getPackageName());
     }
 }
