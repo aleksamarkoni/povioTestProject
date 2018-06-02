@@ -1,4 +1,4 @@
-package com.poviolabs.poviotestproject.room
+package com.poviolabs.poviotestproject.models
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.Index
@@ -14,11 +14,11 @@ data class Flower(
         @field:SerializedName("name")
         val name: String,
         @field:SerializedName("latin_name")
-        val fullName: String,
+        val latinName: String,
         @field:SerializedName("sightings")
         val sightings: Int,
         @field:SerializedName("profile_picture")
-        val description: String?,
+        val profilePicture: String?,
         @field:SerializedName("favorite")
         val favorite: Boolean
 )

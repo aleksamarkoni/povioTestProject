@@ -18,24 +18,14 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
-import androidx.navigation.fragment.findNavController
-import com.android.example.github.AppExecutors
-import com.android.example.github.R
-import com.android.example.github.binding.FragmentDataBindingComponent
-import com.android.example.github.databinding.SearchFragmentBinding
-import com.android.example.github.di.Injectable
-import com.android.example.github.testing.OpenForTesting
-import com.android.example.github.ui.common.RepoListAdapter
-import com.android.example.github.ui.common.RetryCallback
-import com.android.example.github.ui.search.SearchViewModel
-import com.android.example.github.util.autoCleared
 import com.poviolabs.poviotestproject.AppExecutors
+import com.poviolabs.poviotestproject.R
+import com.poviolabs.poviotestproject.binding.FragmentDataBindingComponent
 import com.poviolabs.poviotestproject.databinding.SearchFragmentBinding
 import com.poviolabs.poviotestproject.di.Injectable
 import com.poviolabs.poviotestproject.util.autoCleared
 import javax.inject.Inject
 
-@OpenForTesting
 class SearchFragment : Fragment(), Injectable {
 
     @Inject
@@ -48,20 +38,20 @@ class SearchFragment : Fragment(), Injectable {
 
     var binding by autoCleared<SearchFragmentBinding>()
 
-    var adapter by autoCleared<RepoListAdapter>()
+    var adapter by autoCleared<FlowerListAdapter>()
 
     lateinit var searchViewModel: SearchViewModel
 
     override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
+            inflater: LayoutInflater, container: ViewGroup?,
+            savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(
-            inflater,
-            R.layout.search_fragment,
-            container,
-            false,
-            dataBindingComponent
+                inflater,
+                R.layout.search_fragment,
+                container,
+                false,
+                dataBindingComponent
         )
 
         return binding.root
@@ -70,16 +60,15 @@ class SearchFragment : Fragment(), Injectable {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         searchViewModel = ViewModelProviders.of(this, viewModelFactory)
-            .get(SearchViewModel::class.java)
+                .get(SearchViewModel::class.java)
         initRecyclerView()
-        val rvAdapter = RepoListAdapter(
-            dataBindingComponent = dataBindingComponent,
-            appExecutors = appExecutors,
-            showFullName = true
+        val rvAdapter = FlowerListAdapter(
+                dataBindingComponent = dataBindingComponent,
+                appExecutors = appExecutors
         ) { repo ->
-            navController().navigate(
-                    SearchFragmentDirections.showRepo(repo.owner.login, repo.name)
-            )
+            //navController().navigate(
+                    //TODO open flower details screen, not needed for the test project
+            //)
         }
         binding.repoList.adapter = rvAdapter
         adapter = rvAdapter
@@ -156,9 +145,4 @@ class SearchFragment : Fragment(), Injectable {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(windowToken, 0)
     }
-
-    /**
-     * Created to be able to override in tests
-     */
-    fun navController() = findNavController()
 }

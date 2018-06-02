@@ -1,4 +1,4 @@
-package com.poviolabs.poviotestproject.room
+package com.poviolabs.poviotestproject.models
 
 import com.google.gson.annotations.SerializedName
 
