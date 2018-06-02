@@ -1,16 +1,14 @@
 package com.poviolabs.poviotestproject.models
 
 import android.arch.persistence.room.Entity
-import android.arch.persistence.room.Index
+import android.arch.persistence.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
 @Entity(
-        indices = [
-            (Index("id"))],
-        primaryKeys = ["id"]
+        tableName = "flowers"
 )
 data class Flower(
-        val id: Int,
+        @PrimaryKey @field:SerializedName("id") val id: Int,
         @field:SerializedName("name")
         val name: String,
         @field:SerializedName("latin_name")
