@@ -14,8 +14,12 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+            buildConfigField('String', 'SERVER_URL', '"https://flowrspot-api.herokuapp.com/api/v1/"')
+        }
         release {
             minifyEnabled false
+            buildConfigField('String', 'SERVER_URL', '"https://flowrspot-api.herokuapp.com/api/v1/"')
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -46,6 +50,9 @@ dependencies {
     implementation "android.arch.lifecycle:runtime:1.1.1"
     implementation "android.arch.lifecycle:extensions:1.1.1"
     implementation "android.arch.lifecycle:common-java8:1.1.1"
+
+
+    implementation "android.arch.paging:runtime:1.0.0"
 
     implementation "com.squareup.retrofit2:retrofit:2.4.0"
     implementation "com.squareup.retrofit2:converter-gson:2.4.0"

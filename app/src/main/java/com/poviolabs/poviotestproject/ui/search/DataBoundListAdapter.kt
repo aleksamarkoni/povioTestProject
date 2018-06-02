@@ -1,5 +1,6 @@
 package com.poviolabs.poviotestproject.ui.search
 
+import android.arch.paging.PagedListAdapter
 import android.databinding.ViewDataBinding
 import android.support.v7.recyclerview.extensions.AsyncDifferConfig
 import android.support.v7.recyclerview.extensions.ListAdapter
@@ -16,7 +17,7 @@ import com.poviolabs.poviotestproject.AppExecutors
 abstract class DataBoundListAdapter<T, V : ViewDataBinding>(
         appExecutors: AppExecutors,
         diffCallback: DiffUtil.ItemCallback<T>
-) : ListAdapter<T, DataBoundViewHolder<V>>(
+) : PagedListAdapter<T, DataBoundViewHolder<V>>(
         AsyncDifferConfig.Builder<T>(diffCallback)
                 .setBackgroundThreadExecutor(appExecutors.diskIO())
                 .build()
@@ -29,7 +30,10 @@ abstract class DataBoundListAdapter<T, V : ViewDataBinding>(
     protected abstract fun createBinding(parent: ViewGroup): V
 
     override fun onBindViewHolder(holder: DataBoundViewHolder<V>, position: Int) {
-        bind(holder.binding, getItem(position))
+        val item = getItem(position)
+        if (item != null) {
+            bind(holder.binding, item)
+        }
         holder.binding.executePendingBindings()
     }
 

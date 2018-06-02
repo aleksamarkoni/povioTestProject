@@ -1,5 +1,6 @@
 package com.poviolabs.poviotestproject.di
 
+import com.poviolabs.poviotestproject.BuildConfig
 import com.poviolabs.poviotestproject.util.LiveDataCallAdapterFactory
 import com.poviolabs.poviotestproject.api.PovioService
 import dagger.Module
@@ -14,7 +15,7 @@ class AppModule {
     @Provides
     fun provideGithubService(): PovioService {
         return Retrofit.Builder()
-                .baseUrl("https://flowrspot-api.herokuapp.com/api/v1/")
+                .baseUrl(BuildConfig.SERVER_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(LiveDataCallAdapterFactory())
                 .build()

@@ -8,10 +8,7 @@ import android.databinding.DataBindingComponent
 import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.os.IBinder
-import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
 import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
@@ -74,6 +71,8 @@ class SearchFragment : Fragment(), Injectable {
         adapter = rvAdapter
 
         initSearchInputListener()
+        val query = savedInstanceState?.getString(LAST_SEARCH_QUERY) ?: DEFAULT_QUERY
+        doSearch(query)
 
         binding.callback = object : RetryCallback {
             override fun retry() {
@@ -85,7 +84,7 @@ class SearchFragment : Fragment(), Injectable {
     private fun initSearchInputListener() {
         binding.input.setOnEditorActionListener { view: View, actionId: Int, _: KeyEvent? ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                doSearch(view)
+                doSearchBasedOnInput(view)
                 true
             } else {
                 false
@@ -93,7 +92,7 @@ class SearchFragment : Fragment(), Injectable {
         }
         binding.input.setOnKeyListener { view: View, keyCode: Int, event: KeyEvent ->
             if (event.action == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_ENTER) {
-                doSearch(view)
+                doSearchBasedOnInput(view)
                 true
             } else {
                 false
@@ -101,42 +100,28 @@ class SearchFragment : Fragment(), Injectable {
         }
     }
 
-    private fun doSearch(v: View) {
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(LAST_SEARCH_QUERY, searchViewModel.lastQueryValue())
+    }
+
+    private fun doSearchBasedOnInput(v: View) {
         val query = binding.input.text.toString()
         // Dismiss keyboard
         dismissKeyboard(v.windowToken)
+        doSearch(query)
+    }
+
+    private fun doSearch(query: String) {
         binding.query = query
         searchViewModel.setQuery(query)
     }
 
     private fun initRecyclerView() {
-
-        binding.repoList.addOnScrollListener(object : RecyclerView.OnScrollListener() {
-            override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
-                val layoutManager = recyclerView.layoutManager as LinearLayoutManager
-                val lastPosition = layoutManager.findLastVisibleItemPosition()
-                if (lastPosition == adapter.itemCount - 1) {
-                    searchViewModel.loadNextPage()
-                }
-            }
-        })
         searchViewModel.results.observe(this, Observer { result ->
             binding.searchResource = result
             binding.resultCount = result?.data?.size ?: 0
             adapter.submitList(result?.data)
-            binding.executePendingBindings()
-        })
-
-        searchViewModel.loadMoreStatus.observe(this, Observer { loadingMore ->
-            if (loadingMore == null) {
-                binding.loadingMore = false
-            } else {
-                binding.loadingMore = loadingMore.isRunning
-                val error = loadingMore.errorMessageIfNotHandled
-                if (error != null) {
-                    Snackbar.make(binding.loadMoreBar, error, Snackbar.LENGTH_LONG).show()
-                }
-            }
             binding.executePendingBindings()
         })
     }
@@ -144,5 +129,10 @@ class SearchFragment : Fragment(), Injectable {
     private fun dismissKeyboard(windowToken: IBinder) {
         val imm = activity?.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager
         imm?.hideSoftInputFromWindow(windowToken, 0)
+    }
+
+    companion object {
+        private const val LAST_SEARCH_QUERY: String = "last_search_query"
+        private const val DEFAULT_QUERY = ""
     }
 }
