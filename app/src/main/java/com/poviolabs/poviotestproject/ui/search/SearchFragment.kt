@@ -137,6 +137,10 @@ class SearchFragment : Fragment(), Injectable {
     }
 
     companion object {
+        fun newInstance(): Fragment {
+            return SearchFragment()
+        }
+
         private const val LAST_SEARCH_QUERY: String = "last_search_query"
         private const val DEFAULT_QUERY = ""
     }

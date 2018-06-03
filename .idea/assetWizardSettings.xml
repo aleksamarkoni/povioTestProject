@@ -14,8 +14,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_pl_icon_search" />
-                            <entry key="sourceFile" value="C:\Users\aleks\Desktop\povio\pl_icon_search.svg" />
+                            <entry key="outputName" value="ic_sighting_list_icon" />
+                            <entry key="sourceFile" value="C:\Users\aleks\Desktop\povio\sighting_list_icon.svg" />
                           </map>
                         </option>
                       </PersistentState>

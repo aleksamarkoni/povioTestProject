@@ -1,125 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/background_light">
+    tools:context=".MainActivity">
 
-    <android.support.design.widget.AppBarLayout
-        android:id="@+id/main.appbar"
-        android:layout_width="match_parent"
+    <FrameLayout
+        android:id="@+id/fragmentContainer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigation"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:itemIconTint="@drawable/bottom_nav_colors"
+        app:menu="@menu/navigation" />
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/materialup.toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:minHeight="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:theme="@style/ThemeOverlay.AppCompat.Light">
-
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:fontFamily="@font/ubuntu"
-                android:textStyle="bold"
-                android:textSize="24sp"
-                android:textColor="@color/pinkish_tan"
-                android:text="@string/flowrspot" />
-        </android.support.v7.widget.Toolbar>
-
-        <android.support.constraint.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="315dp"
-            app:layout_scrollFlags="scroll|enterAlways">
-
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginStart="8dp"
-                android:layout_marginEnd="8dp"
-                android:contentDescription="@string/search_background_image"
-                android:scaleType="centerCrop"
-                android:src="@drawable/pl_hero"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/discoverFlowersMessage"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="58dp"
-                android:layout_marginTop="60dp"
-                android:layout_marginEnd="58dp"
-                android:fontFamily="@font/ubuntu_l"
-                android:gravity="center_horizontal"
-                android:lineSpacingExtra="5sp"
-                android:text="@string/discover_flowers_around_you"
-                android:textColor="@android:color/white"
-                android:textSize="24sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/exploreSightingsMessage"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="26dp"
-                android:fontFamily="@font/ubuntu_l"
-                android:gravity="center_horizontal"
-                android:lineSpacingExtra="2sp"
-                android:text="@string/explore_between_more_sightings"
-                android:textColor="@android:color/white"
-                android:textSize="15sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/discoverFlowersMessage"
-                tools:text="@string/explore_between_more_sightings" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="29dp"
-                android:layout_marginEnd="24dp"
-                android:background="@drawable/round_corners_drawable"
-                android:drawableEnd="@drawable/ic_pl_icon_search"
-                android:fontFamily="@font/ubuntu_l"
-                android:hint="@string/looking_for_something_specific"
-                android:inputType="text"
-                android:lineSpacingExtra="4sp"
-                android:paddingStart="20dp"
-                android:paddingEnd="20dp"
-                android:textColor="@color/colorGray"
-                android:textColorHint="@color/colorGray"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/exploreSightingsMessage"
-                tools:ignore="Autofill" />
-
-        </android.support.constraint.ConstraintLayout>
-    </android.support.design.widget.AppBarLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="8dp"
-            android:padding="16dp"
-            android:text="@string/lorem"
-            android:textSize="20sp" />
-    </android.support.v4.widget.NestedScrollView>
-
-</android.support.design.widget.CoordinatorLayout>
+</android.support.constraint.ConstraintLayout>
