@@ -12,5 +12,5 @@ import com.poviolabs.poviotestproject.models.Flower
 )
 abstract class PovioDb : RoomDatabase() {
 
-    abstract fun flowerDao(): FlowerDao
+    abstract fun flowerDao(): FlowersDao
 }

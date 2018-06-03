@@ -6,9 +6,8 @@ import android.arch.lifecycle.Transformations
 import android.arch.lifecycle.ViewModel
 import android.arch.paging.PagedList
 import com.poviolabs.poviotestproject.models.Flower
-import com.poviolabs.poviotestproject.models.Resource
+import com.poviolabs.poviotestproject.repository.FlowerSearchResult
 import com.poviolabs.poviotestproject.repository.FlowersRepository
-import com.poviolabs.poviotestproject.util.AbsentLiveData
 import java.util.*
 import javax.inject.Inject
 
@@ -16,14 +15,13 @@ class SearchViewModel @Inject constructor(repoRepository: FlowersRepository) : V
 
     private val query = MutableLiveData<String>()
 
-    val results: LiveData<Resource<PagedList<Flower>>> = Transformations
-            .switchMap(query) {
-                if (it.isNullOrBlank()) {
-                    AbsentLiveData.create()
-                } else {
-                    repoRepository.search(it)
-                }
-            }
+    val flowerResults: LiveData<FlowerSearchResult> = Transformations
+            .map(query) { repoRepository.search(it) }
+
+    val flowers: LiveData<PagedList<Flower>> = Transformations.switchMap(flowerResults,
+            { it -> it.data })
+    val networkErrors: LiveData<String> = Transformations.switchMap(flowerResults,
+            { it -> it.networkErrors })
 
     fun setQuery(originalInput: String) {
         val input = originalInput.toLowerCase(Locale.getDefault()).trim()

@@ -20,6 +20,7 @@ import com.poviolabs.poviotestproject.R
 import com.poviolabs.poviotestproject.binding.FragmentDataBindingComponent
 import com.poviolabs.poviotestproject.databinding.SearchFragmentBinding
 import com.poviolabs.poviotestproject.di.Injectable
+import com.poviolabs.poviotestproject.models.Resource
 import com.poviolabs.poviotestproject.util.autoCleared
 import javax.inject.Inject
 
@@ -64,7 +65,7 @@ class SearchFragment : Fragment(), Injectable {
                 appExecutors = appExecutors
         ) { repo ->
             //navController().navigate(
-                    //TODO open flower details screen, not needed for the test project
+            //TODO open flower details screen, not needed for the test project
             //)
         }
         binding.repoList.adapter = rvAdapter
@@ -118,10 +119,14 @@ class SearchFragment : Fragment(), Injectable {
     }
 
     private fun initRecyclerView() {
-        searchViewModel.results.observe(this, Observer { result ->
-            binding.searchResource = result
-            binding.resultCount = result?.data?.size ?: 0
-            adapter.submitList(result?.data)
+        searchViewModel.flowers.observe(this, Observer { result ->
+            binding.searchResource = Resource.success(result)
+            binding.resultCount = result?.size ?: 0
+            adapter.submitList(result)
+            binding.executePendingBindings()
+        })
+        searchViewModel.networkErrors.observe(this, Observer<String> {
+            binding.searchResource = Resource.error<String>(it ?: "Unknown error", null)
             binding.executePendingBindings()
         })
     }
