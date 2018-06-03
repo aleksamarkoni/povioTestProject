@@ -25,4 +25,6 @@
 	<string name="search_background_image">Search background image</string>
 	<string name="discover_flowers_around_you">Discover flowers around you</string>
 	<string name="looking_for_something_specific">Looking for something specific?</string>
+	<string name="explore_between_more_sightings">Explore between more than 8.427 sightings</string>
+	<string name="flowrspot">FlowrSpot</string>
 </resources>

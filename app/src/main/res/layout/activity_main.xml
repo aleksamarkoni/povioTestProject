@@ -17,22 +17,34 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"
-            app:layout_scrollFlags="scroll|enterAlways|snap"
-            app:theme="@style/ThemeOverlay.AppCompat.Light" />
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:theme="@style/ThemeOverlay.AppCompat.Light">
+
+            <TextView
+                android:id="@+id/toolbar_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/ubuntu"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/pinkish_tan"
+                android:text="@string/flowrspot" />
+        </android.support.v7.widget.Toolbar>
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="300dp"
-            app:layout_scrollFlags="scroll|enterAlways|snap">
+            android:layout_height="315dp"
+            app:layout_scrollFlags="scroll|enterAlways">
 
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
                 android:contentDescription="@string/search_background_image"
-                android:src="@drawable/pl_hero"
                 android:scaleType="centerCrop"
+                android:src="@drawable/pl_hero"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -63,12 +75,13 @@
                 android:fontFamily="@font/ubuntu_l"
                 android:gravity="center_horizontal"
                 android:lineSpacingExtra="2sp"
+                android:text="@string/explore_between_more_sightings"
                 android:textColor="@android:color/white"
                 android:textSize="15sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/discoverFlowersMessage"
-                tools:text="Explore between more than 8.427 sightings" />
+                tools:text="@string/explore_between_more_sightings" />
 
             <EditText
                 android:layout_width="match_parent"
@@ -77,15 +90,16 @@
                 android:layout_marginTop="29dp"
                 android:layout_marginEnd="24dp"
                 android:background="@drawable/round_corners_drawable"
+                android:drawableEnd="@drawable/ic_pl_icon_search"
                 android:fontFamily="@font/ubuntu_l"
                 android:hint="@string/looking_for_something_specific"
                 android:inputType="text"
                 android:lineSpacingExtra="4sp"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
-                android:textColor="@android:color/white"
+                android:textColor="@color/colorGray"
+                android:textColorHint="@color/colorGray"
                 android:textSize="14sp"
-                android:drawableEnd="@drawable/ic_pl_icon_search"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/exploreSightingsMessage"
