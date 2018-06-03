@@ -15,7 +15,7 @@ class SearchViewModel @Inject constructor(repoRepository: FlowersRepository) : V
 
     private val query = MutableLiveData<String>()
 
-    val flowerResults: LiveData<FlowerSearchResult> = Transformations
+    private val flowerResults: LiveData<FlowerSearchResult> = Transformations
             .map(query) { repoRepository.search(it) }
 
     val flowers: LiveData<PagedList<Flower>> = Transformations.switchMap(flowerResults,

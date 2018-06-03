@@ -46,10 +46,10 @@ class RepoBoundaryCallback(
         if (isRequestInProgress) return
 
         isRequestInProgress = true
-        searchRepos(service, query, lastRequestedPage, { repos ->
+        searchRepos(service, query, lastRequestedPage, { flowers ->
             appExecutors.diskIO().execute {
-                Timber.d("Database inserting ${repos.size} repos")
-                flowersDao.insert(repos)
+                Timber.d("Database inserting ${flowers.size} repos")
+                flowersDao.insert(flowers)
                 lastRequestedPage++
                 isRequestInProgress = false
             }

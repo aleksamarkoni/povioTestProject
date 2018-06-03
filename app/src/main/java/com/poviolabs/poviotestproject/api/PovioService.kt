@@ -7,6 +7,6 @@ import retrofit2.http.Query
 
 interface PovioService {
 
-    @GET("flowers")
+    @GET("flowers/search")
     fun searchRepos(@Query("query") query: String, @Query("page") page: Int): Call<SearchResult>
 }

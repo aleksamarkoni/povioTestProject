@@ -11,12 +11,14 @@ import com.poviolabs.poviotestproject.models.Flower
 interface FlowersDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insert(posts: List<Flower>)
+    fun insert(flowers: List<Flower>)
 
     // Do a similar query as the search API:
     // Look for flowers that contain the query string in the name or in the latinName
     // and order those results descending, by the number of sightings and then by name
-    @Query("SELECT * FROM flowers WHERE (name LIKE :queryString) OR (latinName LIKE " +
-            ":queryString) ORDER BY sightings DESC, name ASC")
-    fun flowersByName(queryString: String): DataSource.Factory<Int, Flower>
+    //@Query("SELECT * FROM flowers WHERE (name LIKE :queryString) OR (latinName LIKE " +
+    //        ":queryString) ORDER BY sightings DESC, name ASC")
+    //fun flowersByName(queryString: String): DataSource.Factory<Int, Flower>
+    @Query("select * from flowers")
+    fun flowersByName(): DataSource.Factory<Int, Flower>
 }

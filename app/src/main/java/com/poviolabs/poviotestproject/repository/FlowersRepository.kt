@@ -18,7 +18,7 @@ class FlowersRepository @Inject constructor(
 ) {
 
     fun search(query: String): FlowerSearchResult {
-        val dataSourceFactory = flowersDao.flowersByName(query)
+        val dataSourceFactory = flowersDao.flowersByName()
 
         // every new query creates a new BoundaryCallback
         // The BoundaryCallback will observe when the user reaches to the edges of
