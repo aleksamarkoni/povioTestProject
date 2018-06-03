@@ -57,7 +57,7 @@
                     android:layout_gravity="center"
                     android:fontFamily="@font/ubuntu"
                     android:text="@string/flowrspot"
-                    android:textColor="@color/pinkish_tan"
+                    android:textColor="@color/colorAccent"
                     android:textSize="24sp"
                     android:textStyle="bold" />
             </android.support.v7.widget.Toolbar>
@@ -161,7 +161,7 @@
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:listitem="@layout/repo_item" />
+                    tools:listitem="@layout/flower_item" />
 
                 <TextView
                     android:id="@+id/no_results_text"

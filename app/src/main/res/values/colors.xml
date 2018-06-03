@@ -2,7 +2,6 @@
 <resources>
     <color name="colorPrimary">#ffffff</color>
     <color name="colorPrimaryDark">#CCCCCC</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#e09186</color>
     <color name="colorGray">#949ea0</color>
-    <color name="pinkish_tan">#e09186</color>
 </resources>

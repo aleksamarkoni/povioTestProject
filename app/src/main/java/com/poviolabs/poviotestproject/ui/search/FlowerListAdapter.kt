@@ -7,7 +7,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.poviolabs.poviotestproject.AppExecutors
 import com.poviolabs.poviotestproject.R
-import com.poviolabs.poviotestproject.databinding.RepoItemBinding
+import com.poviolabs.poviotestproject.databinding.FlowerItemBinding
 import com.poviolabs.poviotestproject.models.Flower
 
 /**
@@ -17,7 +17,7 @@ class FlowerListAdapter(
         private val dataBindingComponent: DataBindingComponent,
         appExecutors: AppExecutors,
         private val repoClickCallback: ((Flower) -> Unit)?
-) : DataBoundListAdapter<Flower, RepoItemBinding>(
+) : DataBoundListAdapter<Flower, FlowerItemBinding>(
         appExecutors = appExecutors,
         diffCallback = object : DiffUtil.ItemCallback<Flower>() {
             override fun areItemsTheSame(oldItem: Flower, newItem: Flower): Boolean {
@@ -35,10 +35,10 @@ class FlowerListAdapter(
         }
 ) {
 
-    override fun createBinding(parent: ViewGroup): RepoItemBinding {
-        val binding = DataBindingUtil.inflate<RepoItemBinding>(
+    override fun createBinding(parent: ViewGroup): FlowerItemBinding {
+        val binding = DataBindingUtil.inflate<FlowerItemBinding>(
                 LayoutInflater.from(parent.context),
-                R.layout.repo_item,
+                R.layout.flower_item,
                 parent,
                 false,
                 dataBindingComponent
@@ -51,7 +51,7 @@ class FlowerListAdapter(
         return binding
     }
 
-    override fun bind(binding: RepoItemBinding, item: Flower) {
+    override fun bind(binding: FlowerItemBinding, item: Flower) {
         binding.flower = item
     }
 }
