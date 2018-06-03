@@ -9,4 +9,5 @@
 	<string name="looking_for_something_specific">Looking for something specific?</string>
 	<string name="explore_between_more_sightings">Explore between more than 8.427 sightings</string>
 	<string name="flowrspot">FlowrSpot</string>
+    <string name="flower_image">Flower image</string>
 </resources>

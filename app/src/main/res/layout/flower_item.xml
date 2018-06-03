@@ -20,10 +20,19 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginBottom="8dp"
+            android:contentDescription="@string/flower_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="w,4:5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_margin="16dp"
+            android:src="@drawable/favorits_icon_selector"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
