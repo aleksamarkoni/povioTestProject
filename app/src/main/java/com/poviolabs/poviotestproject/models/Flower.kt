@@ -16,7 +16,7 @@ data class Flower(
         @field:SerializedName("sightings")
         val sightings: Int,
         @field:SerializedName("profile_picture")
-        val profilePicture: String?,
+        val flowerPicture: String?,
         @field:SerializedName("favorite")
         val favorite: Boolean
 )

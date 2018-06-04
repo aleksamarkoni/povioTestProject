@@ -29,7 +29,7 @@ class FlowerListAdapter(
                         && oldItem.name == newItem.name
                         && oldItem.latinName == newItem.latinName
                         && oldItem.sightings == newItem.sightings
-                        && oldItem.profilePicture == newItem.profilePicture
+                        && oldItem.flowerPicture == newItem.flowerPicture
                         && oldItem.favorite == newItem.favorite
             }
         }

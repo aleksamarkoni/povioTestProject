@@ -19,13 +19,27 @@
             android:id="@+id/flowerImage"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginBottom="8dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/flower_image"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="w,4:5"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:imageUrl="@{flower.flowerPicture}"
+            tools:src="@drawable/pl_image"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/image_gradient_overlay"
             android:contentDescription="@string/flower_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="w,4:5"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
 
         <ImageView
             android:layout_width="24dp"
@@ -37,38 +51,54 @@
 
         <TextView
             android:id="@+id/name"
-            android:layout_width="368dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:text="@{flower.name}"
-            app:layout_constraintStart_toEndOf="@+id/stars"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="repository name" />
-
-        <TextView
-            android:id="@+id/desc"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:text="@{flower.latinName}"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/ubuntu_regular"
+            android:gravity="center_horizontal"
+            android:text="@{flower.name}"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/latinName"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/name"
-            tools:layout_editor_absoluteX="@dimen/default_margin"
-            tools:text="this is some description more description more description" />
+            tools:text="Balloon Flower" />
 
         <TextView
-            android:id="@+id/stars"
+            android:id="@+id/latinName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/ubuntu_regular"
+            android:gravity="center_horizontal"
+            android:text="@{flower.latinName}"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toTopOf="@+id/sightsings"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:text="Playcodon grandiflorus" />
+
+        <TextView
+            android:id="@+id/sightsings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:drawableStart="@android:drawable/btn_star"
-            android:gravity="center"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="24dp"
+            android:fontFamily="@font/ubuntu_regular"
+            android:gravity="center_horizontal"
             android:text="@{Integer.toString(flower.sightings)}"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="5" />
+            tools:text="127 sightings" />
     </android.support.constraint.ConstraintLayout>
 </layout>
