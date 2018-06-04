@@ -121,14 +121,13 @@
                     android:layout_marginTop="29dp"
                     android:layout_marginEnd="24dp"
                     android:background="@drawable/round_corners_drawable"
-                    android:drawableEnd="@drawable/ic_pl_icon_search"
                     android:fontFamily="@font/ubuntu_light"
                     android:hint="@string/looking_for_something_specific"
                     android:imeOptions="actionSearch"
                     android:inputType="textNoSuggestions"
                     android:lineSpacingExtra="4sp"
                     android:paddingStart="20dp"
-                    android:paddingEnd="20dp"
+                    android:paddingEnd="48dp"
                     android:textColor="@color/colorGray"
                     android:textColorHint="@color/colorGray"
                     android:textSize="14sp"
@@ -136,6 +135,17 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/exploreSightingsMessage"
                     tools:ignore="Autofill" />
+
+                <ImageView
+                    android:id="@+id/searchButton"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_pl_icon_search"
+                    android:padding="12dp"
+                    android:contentDescription="@string/search_action_icon"
+                    app:layout_constraintBottom_toBottomOf="@+id/input"
+                    app:layout_constraintTop_toTopOf="@+id/input"
+                    app:layout_constraintEnd_toEndOf="@+id/input"/>
 
             </android.support.constraint.ConstraintLayout>
         </android.support.design.widget.AppBarLayout>
@@ -156,7 +166,6 @@
                 app:layout_constrainedWidth="true"
                 app:layoutManager="android.support.v7.widget.GridLayoutManager"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -167,12 +176,17 @@
                 android:id="@+id/no_results_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_margin="24dp"
                 android:text="@{@string/empty_search_result(query)}"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                android:fontFamily="@font/ubuntu_light"
+                android:gravity="center_horizontal"
+                android:lineSpacingExtra="5sp"
+                android:textColor="@color/colorAccent"
+                android:textSize="24sp"
                 app:visibleGone="@{searchResource.status == Status.SUCCESS &amp;&amp; resultCount == 0}"
                 tools:layout_editor_absoluteY="247dp" />
 

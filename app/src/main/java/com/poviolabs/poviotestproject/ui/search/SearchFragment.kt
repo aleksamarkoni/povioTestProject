@@ -1,5 +1,6 @@
 package com.poviolabs.poviotestproject.ui.search
 
+import android.annotation.SuppressLint
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProvider
 import android.arch.lifecycle.ViewModelProviders
@@ -23,6 +24,7 @@ import com.poviolabs.poviotestproject.di.Injectable
 import com.poviolabs.poviotestproject.models.Resource
 import com.poviolabs.poviotestproject.util.autoCleared
 import javax.inject.Inject
+
 
 class SearchFragment : Fragment(), Injectable {
 
@@ -82,6 +84,7 @@ class SearchFragment : Fragment(), Injectable {
         }
     }
 
+    @SuppressLint("ClickableViewAccessibility")
     private fun initSearchInputListener() {
         binding.input.setOnEditorActionListener { view: View, actionId: Int, _: KeyEvent? ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
@@ -99,6 +102,8 @@ class SearchFragment : Fragment(), Injectable {
                 false
             }
         }
+
+        binding.searchButton.setOnClickListener { doSearchBasedOnInput(it) }
     }
 
     override fun onSaveInstanceState(outState: Bundle) {

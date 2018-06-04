@@ -13,4 +13,5 @@
     <string name="no_sightings">No sightings</string>
     <string name="one_sighting">One sighting</string>
     <string name="sightings_plural">%d  sightings</string>
+    <string name="search_action_icon">Search action icon</string>
 </resources>
