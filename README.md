@@ -13,10 +13,6 @@ This project is based on the latest Android Arhitecture Paging sample.
 It uses Room database as a single source of truth, and then when and if
 needed uses Paging library to download more pages from the server.
 
-<img src="markdownpictures/search_area.jpg" width="200">
-<img src="markdownpictures/search_list.jpg" width="200">
-<img src="markdownpictures/no_results.jpg" width="200">
-
 ### Libraries
 * [Kotlin] For kotlin language support
 * [Android Support Library][support-lib]
@@ -32,4 +28,7 @@ needed uses Paging library to download more pages from the server.
 * [espresso][espresso] for UI tests
 * [mockito][mockito] for mocking in tests
 
+<img src="markdownpictures/search_area.jpg" width="200">
+<img src="markdownpictures/search_list.jpg" width="200">
+<img src="markdownpictures/no_results.jpg" width="200">
 
