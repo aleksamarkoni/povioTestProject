@@ -13,6 +13,7 @@
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
+        android:layout_margin="6dp"
         android:layout_height="wrap_content">
 
         <ImageView
@@ -53,8 +54,8 @@
             android:id="@+id/name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
             android:fontFamily="@font/ubuntu_regular"
             android:gravity="center_horizontal"
@@ -70,8 +71,8 @@
             android:id="@+id/latinName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/ubuntu_regular"
             android:gravity="center_horizontal"
@@ -88,8 +89,8 @@
             android:id="@+id/sightsings"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/ubuntu_regular"
             android:gravity="center_horizontal"
