@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals
+        name="sightings">
+        <item quantity="zero">@string/no_sightings</item>
+        <item quantity="one">@string/one_sighting</item>
+        <item quantity="other">@string/sightings_plural</item>
+    </plurals>
+</resources>

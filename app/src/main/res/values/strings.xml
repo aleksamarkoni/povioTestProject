@@ -10,4 +10,7 @@
 	<string name="explore_between_more_sightings">Explore between more than 8.427 sightings</string>
 	<string name="flowrspot">FlowrSpot</string>
     <string name="flower_image">Flower image</string>
+    <string name="no_sightings">No sightings</string>
+    <string name="one_sighting">One sighting</string>
+    <string name="sightings_plural">%d  sightings</string>
 </resources>

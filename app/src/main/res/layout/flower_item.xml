@@ -27,7 +27,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:imageUrl="@{flower.flowerPicture}"
+            app:imageUrl="@{`http:` + flower.flowerPicture}"
             tools:src="@drawable/pl_image"/>
 
         <View
@@ -94,7 +94,7 @@
             android:layout_marginBottom="24dp"
             android:fontFamily="@font/ubuntu_regular"
             android:gravity="center_horizontal"
-            android:text="@{Integer.toString(flower.sightings)}"
+            app:sightings="@{flower.sightings}"
             android:textColor="@android:color/white"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
